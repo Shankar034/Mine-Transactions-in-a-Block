@@ -24,6 +24,13 @@ class Transaction {
 
     }
 
+    static transactionWithOutputs(senderWallet, outputs){
+        const transaction = new this();
+        transaction.outputs.push(...outputs);
+        Transaction.signTransaction(transaction, senderWallet);
+        return transaction;
+    }
+
     static newTransaction(senderWallet, recipient, amount){
         const transaction = new this();
 
@@ -33,15 +40,22 @@ class Transaction {
         }
 
 
-        transaction.outputs.push(...[
+        
+
+        return Transaction.transactionWithOutputs(senderWallet, [
             {amount: senderWallet.balance = amount, address: senderWallet.publicKey },
             {amount, address: recipient}
-        ])
+        ] )
 
-        Transaction.signTransaction(transaction, senderWallet);
+     
 
-        return transaction;
+    }
 
+
+    static rewardTransaction (minerWallet, blockchianWallet){
+        return Transaction.transactionWithOutputs(blockchianWallet, [{
+            amount: MINING_REWARD, address: minerWallet.publicKey
+        }]);
     }
 
     static signTransaction(transaction, senderWallet){
