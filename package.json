@@ -1,0 +1,30 @@
+{
+  "name": "course-ii",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "index": "nodemon ",
+    "start": "node ./app",
+    "dev": "nodemon ./app"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.0.1",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "crypto-js": "^4.1.1",
+    "elliptic": "^6.5.4",
+    "express": "^4.18.1",
+    "uuid": "^8.3.2",
+    "ws": "^8.8.1"
+  }
+}
